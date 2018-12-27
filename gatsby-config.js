@@ -1,6 +1,11 @@
+const config = require('./config/website');
+const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
+
 module.exports = {
+  pathPrefix: config.pathPrefix,
   siteMetadata: {
-    title: 'Portfolio Tobi',
+    title: config.siteTitle,
+    siteUrl: config.siteUrl + pathPrefix,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -31,13 +36,25 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
-        start_url: '/',
+        name: config.siteTitle,
+        short_name: config.siteTitleAlt,
+        description: config.siteDescription,
+        start_url: config.pathPrefix,
         background_color: '#663399',
         theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        display: 'fullscreen',
+        icons: [
+          {
+            src: `${__dirname}/src/images/favicons/android-chrome-192x192.jpg`,
+            sizes: '192x192',
+            type: 'image/jpg',
+          },
+          {
+            src: `${__dirname}/src/images/favicons/android-chrome-512x512.jpg`,
+            sizes: '512x512',
+            type: 'image/jpg',
+          },
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
