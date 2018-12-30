@@ -1,6 +1,7 @@
-import { injectGlobal } from 'emotion';
+import { css } from '@emotion/core'
+import FeatherScriptOTF from "../fonts/FeatherScript.otf"
 
-injectGlobal`
+const GlobalString = css`
   html {
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
@@ -10,6 +11,8 @@ injectGlobal`
     background-color: #161719;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 1em;
+    color: white;
   }
   a{
     pointer-events: auto;
@@ -32,4 +35,12 @@ injectGlobal`
     margin: 0;
     padding 0;
   }
+  @font-face {
+   font-family: "Feather-Script";
+   font-style: normal;
+   font-weight: normal;
+   src: local("Feather Script") local("Feather-Script"), url(FeatherScriptOTF) format("otf");
+ }
 `;
+
+export default GlobalString;

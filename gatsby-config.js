@@ -1,5 +1,8 @@
-const config = require('./config/website');
-const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
+const config = require('./config/website')
+const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
+
+const faviconAndroid192 = 'favicons/android-chrome-192x192.jpg'
+const faviconAndroid512 = 'favicons/android-chrome-512x512.jpg'
 
 module.exports = {
   pathPrefix: config.pathPrefix,
@@ -23,6 +26,14 @@ module.exports = {
         path: `${__dirname}/src/data/`,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Charm`,
+        ]
+      }
+    },
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-emotion',
@@ -43,14 +54,15 @@ module.exports = {
         background_color: '#663399',
         theme_color: '#663399',
         display: 'fullscreen',
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
         icons: [
           {
-            src: `${__dirname}/src/images/favicons/android-chrome-192x192.jpg`,
+            src: faviconAndroid192,
             sizes: '192x192',
             type: 'image/jpg',
           },
           {
-            src: `${__dirname}/src/images/favicons/android-chrome-512x512.jpg`,
+            src: faviconAndroid512,
             sizes: '512x512',
             type: 'image/jpg',
           },
