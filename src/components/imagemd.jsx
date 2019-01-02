@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -22,7 +22,7 @@ import styled from '@emotion/styled';
 class Imagemd extends React.Component {
 
   componentDidMount () {
-    console.log(this.props.imageQ);
+    console.log(this.props.imageQ)
   }
 
   render() {

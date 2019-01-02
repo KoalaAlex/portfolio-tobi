@@ -4,10 +4,11 @@ import { FormattedMessage } from 'react-intl'
 import { Context } from './context'
 import { css } from '@emotion/core'
 
-const LanguageButton = () => (
-    <Context.Consumer>
-        {({ lang, setLanguage }) => (
-              <>
+const LanguageButton = ({ className }) => (
+    <div className={className}>
+      <Context.Consumer>
+          {({ lang, setLanguage }) => (
+            <>
                 <Button type="button" onClick={() => setLanguage('en')} isActive={lang && lang==='en'}>
                   <FormattedMessage id="first-language" />
                 </Button>
@@ -15,9 +16,10 @@ const LanguageButton = () => (
                 <Button type="button" onClick={() => setLanguage('de')} isActive={lang && lang==='de' }>
                   <FormattedMessage id="second-language" />
                 </Button>
-              </>
-        )}
-    </Context.Consumer>
+            </>
+          )}
+      </Context.Consumer>
+    </div>
 )
 
 // We recommend moving the style down below to a separate file

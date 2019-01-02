@@ -77,6 +77,7 @@ const Hedline = styled.h1`
 `
 
 const Icon = styled.svg`
+  position: absolute;
   width: 16px;
   height: 16px;
   fill: white;
@@ -100,20 +101,32 @@ const Button = styled.button`
   `}
 `
 
+const SecondRow = styled.div`
+  grid-row-start: 2;
+  grid-column: 1/-1;
+  background-color: white;
+`
+
+const StyledLanguageButton = styled(LanguageButton)`
+  position: absolute;
+  transform: translate3d(0, 5vh,0);
+`
+
 const searchIcon = carbonIconsSVG + "#icon--header--search"
 
 class Index extends React.PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
      activeIndex: 0,
     }
-    this.changeActiveIndex = this.changeActiveIndex.bind(this);
+    this.changeActiveIndex = this.changeActiveIndex.bind(this)
   }
 
   changeActiveIndex(index){
-    this.setState({activeIndex: index});
+    this.setState({activeIndex: index})
   }
+
   render() {
     return (
       <Layout>
@@ -126,7 +139,7 @@ class Index extends React.PureComponent {
         </BGSlider>
         <FullWindowGrid>
           <ItemCol2>
-            <LanguageButton />
+            <StyledLanguageButton />
             <Icon>
               <title><FormattedMessage id="search-title" />n</title>
               <use xlinkHref={searchIcon}></use>
@@ -166,9 +179,11 @@ class Index extends React.PureComponent {
               <FormattedMessage id="portfolio" />
             </Hedline>
           </ItemSpanColl>
+          <SecondRow>
+          </SecondRow>
         </FullWindowGrid>
       </Layout>
-    );
+    )
   }
 }
 
@@ -196,4 +211,4 @@ query IndexQuery{
     }
   }
 }
-`;
+`
