@@ -8,7 +8,7 @@ const GlobalString = css`
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background-color: #161719;
+    background-color: #fff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 1em;
@@ -27,13 +27,21 @@ const GlobalString = css`
     margin: 0;
     padding: 0;
   }
-  h1, p{
+  h1, h2, h3, h4, h5, h6, p{
       font-family:'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
       pointer-events: auto;
+      margin-block-start: 0;
+      margin-block-end: 0;
   }
   ul, li{
     margin: 0;
     padding 0;
+    list-style-type: none;
+  }
+  button {
+    background-color: unset;
+    border: unset;
+    padding: unset;
   }
   @font-face {
    font-family: "Feather-Script";

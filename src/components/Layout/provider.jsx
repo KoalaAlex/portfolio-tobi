@@ -10,27 +10,30 @@ const Provider = ({ children, lang, setLanguage }) => (
     </Context.Provider>
 )
 
+const en = 'en'
+const de = 'de'
+const lang = 'lang'
+
 const enhance = compose(
-    withState('lang', 'handleLanguage', 'en'),
+    withState(lang, 'handleLanguage', en),
     withHandlers({
         setLanguage: ({lang, handleLanguage, setTo }) => (setTo) => {
-          console.log(setTo);
-            if(setTo === 'de'){
-              if (lang === 'en') {
-                  handleLanguage('de')
-                  localStorage.setItem('lang', 'de')
+            if(setTo === de){
+              if (lang === en) {
+                  handleLanguage(de)
+                  localStorage.setItem(lang, de)
               }
             } else {
-              if (lang === 'de') {
-                  handleLanguage('en')
-                  localStorage.setItem('lang', 'en')
+              if (lang === de) {
+                  handleLanguage(en)
+                  localStorage.setItem(lang, en)
               }
             }
         }
     }),
     lifecycle({
         componentDidMount() {
-            const localLang = localStorage.getItem('lang')
+            const localLang = localStorage.getItem(lang)
             if (localLang) {
                 this.props.handleLanguage(localLang)
             } else {

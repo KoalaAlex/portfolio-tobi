@@ -4,30 +4,32 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@emotion/core": "^10.0.5",
-    "@emotion/styled": "^10.0.5",
-    "carbon-components": "^9.62.3",
-    "carbon-components-react": "^6.63.0",
+    "@emotion/core": "^10.0.6",
+    "@emotion/styled": "^10.0.6",
+    "carbon-components": "^9.68.0",
+    "carbon-components-react": "^6.76.0",
     "carbon-icons": "^7.0.7",
-    "emotion": "^10.0.5",
-    "emotion-server": "^10.0.5",
-    "gatsby": "^2.0.78",
-    "gatsby-image": "^2.0.25",
+    "emotion": "^10.0.6",
+    "emotion-server": "^10.0.6",
+    "eslint-plugin-react-hooks": "0.0.0",
+    "gatsby": "^2.0.91",
+    "gatsby-image": "^2.0.26",
     "gatsby-plugin-emotion": "^3.0.1",
     "gatsby-plugin-google-fonts": "0.0.4",
     "gatsby-plugin-manifest": "^2.0.13",
-    "gatsby-plugin-offline": "^2.0.20",
+    "gatsby-plugin-offline": "^2.0.21",
     "gatsby-plugin-react-helmet": "^3.0.5",
     "gatsby-plugin-sharp": "^2.0.17",
-    "gatsby-source-filesystem": "^2.0.12",
-    "gatsby-transformer-remark": "^2.1.17",
-    "gatsby-transformer-sharp": "^2.1.9",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "gatsby-source-filesystem": "^2.0.16",
+    "gatsby-transformer-remark": "^2.2.0",
+    "gatsby-transformer-sharp": "^2.1.10",
+    "react": "^16.8.0-alpha.1",
+    "react-dom": "^16.8.0-alpha.1",
     "react-emotion": "^10.0.0",
     "react-helmet": "^5.2.0",
-    "react-intl": "^2.7.2",
-    "recompose": "^0.30.0"
+    "react-intl": "^2.8.0",
+    "recompose": "^0.30.0",
+    "video.js": "^7.4.1"
   },
   "keywords": [
     "gatsby"
@@ -41,7 +43,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "prettier": "^1.15.3"
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "1.15.3"
   },
   "repository": {
     "type": "git",

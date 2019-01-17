@@ -19,19 +19,11 @@ import styled from '@emotion/styled'
    height: 100%;
  `;
 
-class Imagemd extends React.Component {
-
-  componentDidMount () {
-    console.log(this.props.imageQ)
-  }
-
-  render() {
-    return (
-      <ImgContain fluid={this.props.imageQ.childImageSharp.fluid} />
-    )
-  }
-}
-export default Imagemd
+export const Imagemd = React.memo((props) => {
+  return (
+    <ImgContain fluid={props.imageQ.childImageSharp.fluid} />
+  )
+});
 
 Imagemd.propTypes = {
   imageQ: PropTypes.object

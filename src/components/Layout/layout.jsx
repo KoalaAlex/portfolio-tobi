@@ -1,6 +1,5 @@
 import React from 'react'
 import { Global } from "@emotion/core"
-import styled from '@emotion/styled'
 import de from 'react-intl/locale-data/de'
 import en from 'react-intl/locale-data/en'
 import { addLocaleData, IntlProvider } from 'react-intl'
