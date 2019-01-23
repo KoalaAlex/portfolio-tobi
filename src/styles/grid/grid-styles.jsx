@@ -55,6 +55,15 @@ export const RowColEnd = styled.li`
   grid-column: -2/-1;
 `
 
+export const RowColMouse = styled.li`
+  grid-row-start: ${props => props.row};
+  grid-column: 5/6;
+  @media (min-width: 768px) {
+      grid-column: 7/8;
+  }
+  justify-items: stretch;
+`
+
 export const ItemCol2 = styled.li`
   grid-column-start: 1;
   justify-items: stretch;

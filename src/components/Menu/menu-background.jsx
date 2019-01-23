@@ -8,7 +8,7 @@ const fadeIn = keyframes`
     opacity: 0;
   }
   100% {
-    opacity: 0.84;
+    opacity: 0.5;
   }
 `
 
@@ -17,10 +17,12 @@ const Wrapper = styled.div`
   display: block;
   width: 100%;
   height: 100%;
-  background-color: #6e33ff;
+  background-color: #191A1F;
+  backdrop-filter: blur(1em);
   top: 0;
-  animation: ${fadeIn} 1.2s ease;
-  opacity: 0.84;
+  animation: ${fadeIn} 0.5s ease-in;
+  opacity: 0.5;
+  backdrop-filter: blur(0.5em);
   z-index: -1;
 `
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Imagemd } from '../components/imagemd'
 import { StaticQuery, graphql } from "gatsby"
@@ -7,7 +7,7 @@ import styled from '@emotion/styled'
 const Wrapper = styled.ul`
   position: absolute;
   display: grid;
-  height: 100vh;
+  height: 100%;
   width: 500%;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(1, 100vh);
@@ -15,6 +15,15 @@ const Wrapper = styled.ul`
   transition: transform 1.2s ease-in-out;
   will-change: transform;
   z-index: -2;
+`
+
+const Container = styled.div`
+  position: absolute;
+  display: block;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
 `
 
 const BGItem = styled.li`
@@ -25,20 +34,27 @@ const BGItem = styled.li`
 `
 
 const BGSlider = React.memo((props) => {
+    // never draw images again
+    const memoImages = useMemo(() => (
+      props.data && props.data.allMarkdownRemark && props.data.allMarkdownRemark.edges.map(({ node }, index) => (
+        <BGItem
+          key={index}
+          position={index + 1}>
+            <Imagemd
+              key={index}
+              imageQ={node.frontmatter.image} />
+        </BGItem>
+      ))
+    ), () => {return true});
     return (
-      <Wrapper
-      className={props.className}
-        activeIndex={props.activeIndex}>
-        {props.data && props.data.allMarkdownRemark && props.data.allMarkdownRemark.edges.map(({ node }, index) => (
-          <BGItem
-            key={index}
-            position={index + 1}>
-              <Imagemd
-                key={index}
-                imageQ={node.frontmatter.image} />
-          </BGItem>
-        ))}
-      </Wrapper>
+      <Container>
+        <Wrapper
+        className={props.className}
+          activeIndex={props.activeIndex}
+          >
+          {memoImages}
+        </Wrapper>
+      </Container>
     );
 });
 

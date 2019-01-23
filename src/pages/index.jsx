@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { fontFace } from 'emotion'
 import styled from '@emotion/styled'
 import { Layout } from '../components/Layout/layout'
 

@@ -13,13 +13,13 @@ const MenuPointButton = styled(Button)`
 
 export const MenuPoint = React.memo((props) => {
   return(
-  <li className={props.className}>
-    <MenuPointButton onClick={() => {props.onClick(props.index)}} isActive={!(props.activeIndex%props.maxPageIndex)}>
-      <h2>
-        <FormattedMessage id={props.languageID} />
-      </h2>
-    </MenuPointButton>
-  </li>
+    <li className={props.className}>
+      <MenuPointButton onClick={() => {props.onClick(props.index)}} isActive={!(props.activeIndex%props.maxPageIndex)}>
+        <h2>
+          <FormattedMessage id={props.languageID} />
+        </h2>
+      </MenuPointButton>
+    </li>
   )
 });
 

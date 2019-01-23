@@ -2,13 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { FormattedMessage } from 'react-intl'
-import { css } from '@emotion/core'
+import { css , keyframes } from '@emotion/core'
 import { LanguageButton } from './LanguageButton'
 import { MenuButton } from './Menu/menu-button'
 import { MenuPoint } from './Menu/menu-point'
 import { Button } from '../styles/general'
 
-import { RowColStretch, RowColSpan, RowColEnd } from '../styles/grid/grid-styles'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group' // ES6
+
+import { RowColMouse, RowColStretch, RowColSpan, RowColEnd } from '../styles/grid/grid-styles'
 import { MouseInside, MouseOutside } from '../styles/mouse'
 
 import carbonIconsSVG from '../../node_modules/carbon-icons/dist/carbon-icons.svg'
@@ -33,11 +35,37 @@ const ButtonList= styled.ul`
   list-style-type: none;
 `
 
+const fadeInHeadline = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
 const HeadlineBig = styled.h1`
-  font-family: 'Feather-Script';
+  font-family: 'FeatherScript';
   font-size: 8em;
+  @media (max-width: 1200px) {
+    font-size: 4em;
+  }
+  @media (max-width: 600px) {
+    font-size: 2em;
+  }
+  width: 100%;
   font-style: italic;
   font-weight: lighter;
+  overflow: hidden;
+  text-align: center;
+  pointer-events: none;
+  &.changed-enter {
+    animation: ${fadeInHeadline} 1s ease-in;
+  }
+  &.changed-leave {
+    animation: ${fadeInHeadline} 1s ease-in;
+    animation-direction: alternate-reverse;
+  }
 `
 
 const RowColStretchCenter = styled(RowColStretch)`
@@ -47,6 +75,8 @@ const RowColStretchCenter = styled(RowColStretch)`
 const RowColSpanCenter = styled(RowColSpan)`
   justify-self: center;
   align-self: center;
+  width: 100%;
+  overflow: hidden;
 `
 
 const RowColEndCenter = styled(RowColEnd)`
@@ -84,6 +114,30 @@ const MenuPointStyled = styled(MenuPoint)`
 `
 
 export const PartOne = React.memo((props) => {
+  function ReturnHeadlineText(){
+    let headline
+    switch(props.activeIndex){
+      case 0:
+        headline = <HeadlineBig key={0} ><FormattedMessage id="page-1" /></HeadlineBig>
+        break
+      case 1:
+        headline = <HeadlineBig key={1} ><FormattedMessage id="page-2" /></HeadlineBig>
+        break
+      case 2:
+        headline = <HeadlineBig key={2} ><FormattedMessage id="page-3" /></HeadlineBig>
+        break;
+      case 3:
+        headline = <HeadlineBig key={3} ><FormattedMessage id="page-4" /></HeadlineBig>
+        break;
+      case 4:
+        headline = <HeadlineBig key={4} ><FormattedMessage id="page-5" /></HeadlineBig>
+        break;
+      default:
+        headline = <HeadlineBig key={5} ><FormattedMessage id="page-1" /></HeadlineBig>
+        break;
+    }
+    return headline
+  }
   return (
     <>
       <RowColSpanCenter row={1}>
@@ -97,16 +151,19 @@ export const PartOne = React.memo((props) => {
         </ul>
         )
         : (
-          <HeadlineBig>
-            <FormattedMessage id="portfolio" />
-          </HeadlineBig>
+          <ReactCSSTransitionGroup
+            transitionName="changed"
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={1000}>
+            {ReturnHeadlineText()}
+          </ReactCSSTransitionGroup>
         )
       }
       </RowColSpanCenter>
       <RowColStretch row={1} column={1}>
         <StyledLanguageButton />
       </RowColStretch>
-      <RowColStretchCenter row={1} column={"6/8"}>
+      <RowColMouse row={1}>
         <MouseWrapper>
           <MouseOutside>
             <MouseInside />
@@ -115,7 +172,7 @@ export const PartOne = React.memo((props) => {
             <FormattedMessage id="scroll-down" />
           </MouseText>
         </MouseWrapper>
-      </RowColStretchCenter>
+      </RowColMouse>
       <RowColStretchTextAlign row={1} column={"-3/-2"} >
         <ButtonIcon>
           <Icon>

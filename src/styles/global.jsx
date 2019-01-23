@@ -1,5 +1,4 @@
 import { css } from '@emotion/core'
-import FeatherScriptOTF from "../fonts/FeatherScript.otf"
 
 const GlobalString = css`
   html {
@@ -43,12 +42,6 @@ const GlobalString = css`
     border: unset;
     padding: unset;
   }
-  @font-face {
-   font-family: "Feather-Script";
-   font-style: normal;
-   font-weight: normal;
-   src: local("Feather Script") local("Feather-Script"), url(FeatherScriptOTF) format("otf");
- }
 `;
 
 export default GlobalString;

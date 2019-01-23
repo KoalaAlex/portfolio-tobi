@@ -8,16 +8,29 @@ import localDE from '../../localize/de.json'
 import { Context } from '../context'
 import Provider from './provider'
 
+import { createGlobalStyle } from "styled-components";
+
+import fontFiles from '../../fonts/fonts';
+
 // css string
 import GlobalString from '../../styles/global'
 
 addLocaleData(de, en)
+
+const GlobalFontFace = createGlobalStyle`
+  font-family: 'FeatherScript';
+  src: local('FeatherScript') local('FeatherScript'),
+     url(${fontFiles.FeatherScriptWOFF}) format('woff'), /* Moder Browser */
+     url(${fontFiles.FeatherScriptTTF}) format('truetype'), /* Safari, Android, iOS */
+     url(${fontFiles.FeatherScriptOTF}) format('opentype');
+`;
 
 const Layout = ({ children }) => (
   <>
     <Global
        styles={GlobalString}
      />
+    <GlobalFontFace />
       <Provider>
           <Context.Consumer>
               {({ lang }) => (

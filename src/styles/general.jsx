@@ -6,6 +6,7 @@ export const Headline = styled.h1`
   font-size: 2em;
   color: #232D3C;
   margin-top: 4vh;
+  overflow: hidden;
 `
 
 export const SubHeadline = styled.h2`
