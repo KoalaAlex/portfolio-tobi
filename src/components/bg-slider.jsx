@@ -13,6 +13,7 @@ const Wrapper = styled.ul`
   grid-template-rows: repeat(1, 100vh);
   transform: translate3d(${props => props.activeIndex * -20}%,0,0);
   transition: transform 1.2s ease-in-out;
+  -webkit-will-change: transform;
   will-change: transform;
   z-index: -2;
 `
@@ -27,7 +28,10 @@ const Container = styled.div`
 `
 
 const BGItem = styled.li`
-  grid-column: ${props => props.position}/${props => props.position + 1} ;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  grid-column: ${props => props.position}/${props => props.position + 1};
   grid-row-start: 1;
   justify-items: stretch;
   z-index: -1;

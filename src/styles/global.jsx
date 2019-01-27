@@ -27,7 +27,7 @@ const GlobalString = css`
     padding: 0;
   }
   h1, h2, h3, h4, h5, h6, p{
-      font-family:'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
+      font-family: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
       pointer-events: auto;
       margin-block-start: 0;
       margin-block-end: 0;

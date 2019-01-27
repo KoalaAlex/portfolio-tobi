@@ -45,6 +45,10 @@ const fadeInHeadline = keyframes`
 `
 
 const HeadlineBig = styled.h1`
+  position: absolute;
+  display: flex;
+  width: 94%;
+  height: 100%;
   font-family: 'FeatherScript';
   font-size: 8em;
   @media (max-width: 1200px) {
@@ -53,17 +57,23 @@ const HeadlineBig = styled.h1`
   @media (max-width: 600px) {
     font-size: 2em;
   }
-  width: 100%;
+  @media (min-width: 768px) {
+      width: 90%;
+  }
   font-style: italic;
   font-weight: lighter;
   overflow: hidden;
   text-align: center;
   pointer-events: none;
+  justify-content: center;
+  align-items: center;
   &.changed-enter {
-    animation: ${fadeInHeadline} 1s ease-in;
+    opacity: 1;
+    animation: ${fadeInHeadline} 0.8s ease-in;
   }
   &.changed-leave {
-    animation: ${fadeInHeadline} 1s ease-in;
+    opacity: 0;
+    animation: ${fadeInHeadline} 0.8s ease-in;
     animation-direction: alternate-reverse;
   }
 `
@@ -76,6 +86,7 @@ const RowColSpanCenter = styled(RowColSpan)`
   justify-self: center;
   align-self: center;
   width: 100%;
+  height: 100%;
   overflow: hidden;
 `
 
@@ -113,6 +124,14 @@ const MenuPointStyled = styled(MenuPoint)`
   margin: 1em;
 `
 
+const MenuFlex = styled.ul`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+`
+
 export const PartOne = React.memo((props) => {
   function ReturnHeadlineText(){
     let headline
@@ -142,13 +161,13 @@ export const PartOne = React.memo((props) => {
     <>
       <RowColSpanCenter row={1}>
       {props.isMenuActive ? (
-        <ul>
-          <MenuPointStyled languageID={"page-1"} index={0} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex}/>
-          <MenuPointStyled languageID={"page-2"} index={1} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex}/>
-          <MenuPointStyled languageID={"page-3"} index={2} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex}/>
-          <MenuPointStyled languageID={"page-4"} index={3} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} />
-          <MenuPointStyled languageID={"page-5"} index={4} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex}/>
-        </ul>
+        <MenuFlex>
+          <MenuPointStyled languageID={"page-1"} index={0} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex}/>
+          <MenuPointStyled languageID={"page-2"} index={1} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex}/>
+          <MenuPointStyled languageID={"page-3"} index={2} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex}/>
+          <MenuPointStyled languageID={"page-4"} index={3} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex}/>
+          <MenuPointStyled languageID={"page-5"} index={4} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex}/>
+        </MenuFlex>
         )
         : (
           <ReactCSSTransitionGroup

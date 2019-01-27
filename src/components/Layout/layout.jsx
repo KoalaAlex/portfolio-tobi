@@ -7,6 +7,7 @@ import localEN from '../../localize/en.json'
 import localDE from '../../localize/de.json'
 import { Context } from '../context'
 import Provider from './provider'
+import { Seo } from '../seo'
 
 import { createGlobalStyle } from "styled-components";
 
@@ -30,6 +31,7 @@ const Layout = ({ children }) => (
     <Global
        styles={GlobalString}
      />
+    <Seo />
     <GlobalFontFace />
       <Provider>
           <Context.Consumer>
