@@ -37,7 +37,7 @@ export function MenuPoint(props){
   const active = !((props.activeIndex-props.index)%props.maxPageIndex)
   return(
     <li className={props.className}>
-      <MenuPointButton onClick={() => {props.onClick(props.index)}} isActive={active}>
+      <MenuPointButton onClick={() => {props.onClick(props.activeIndexRef, props.index)}} isActive={active}>
         <FormattedMessage id={props.languageID} />
       </MenuPointButton>
     </li>
@@ -51,4 +51,5 @@ MenuPoint.propTypes = {
   index: PropTypes.number.isRequired,
   maxPageIndex: PropTypes.number.isRequired,
   activeIndex: PropTypes.number.isRequired,
+  activeIndexRef: PropTypes.object,
 }

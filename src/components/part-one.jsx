@@ -162,11 +162,11 @@ export const PartOne = React.memo((props) => {
       <RowColSpanCenter row={1}>
       {props.isMenuActive ? (
         <MenuFlex>
-          <MenuPointStyled languageID={"page-1"} index={0} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex}/>
-          <MenuPointStyled languageID={"page-2"} index={1} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex}/>
-          <MenuPointStyled languageID={"page-3"} index={2} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex}/>
-          <MenuPointStyled languageID={"page-4"} index={3} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex}/>
-          <MenuPointStyled languageID={"page-5"} index={4} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex}/>
+          <MenuPointStyled languageID={"page-1"} index={0} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex} activeIndexRef={props.activeIndexRef}/>
+          <MenuPointStyled languageID={"page-2"} index={1} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex} activeIndexRef={props.activeIndexRef}/>
+          <MenuPointStyled languageID={"page-3"} index={2} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex} activeIndexRef={props.activeIndexRef}/>
+          <MenuPointStyled languageID={"page-4"} index={3} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex} activeIndexRef={props.activeIndexRef}/>
+          <MenuPointStyled languageID={"page-5"} index={4} maxPageIndex={maxPageIndex} onClick={props.changeActiveIndex} activeIndex={props.activeIndex} activeIndexRef={props.activeIndexRef}/>
         </MenuFlex>
         )
         : (
@@ -204,27 +204,27 @@ export const PartOne = React.memo((props) => {
         <MenuButton buttonClick={props.menuToggle} isCloseButton={props.isMenuActive}/>
         <ButtonList>
           <li>
-            <Button onClick={() => {props.changeActiveIndex(0)}} isActive={!(props.activeIndex%maxPageIndex)}>
+            <Button onClick={() => {props.changeActiveIndex(props.activeIndexRef, 0)}} isActive={!(props.activeIndex%maxPageIndex)}>
               <p>01</p>
             </Button>
           </li>
           <li>
-            <Button onClick={() => {props.changeActiveIndex(1)}} isActive={!((props.activeIndex-1)%maxPageIndex)}>
+            <Button onClick={() => {props.changeActiveIndex(props.activeIndexRef, 1)}} isActive={!((props.activeIndex-1)%maxPageIndex)}>
               <p>02</p>
             </Button>
           </li>
           <li>
-            <Button onClick={() => {props.changeActiveIndex(2)}} isActive={!((props.activeIndex-2)%maxPageIndex)}>
+            <Button onClick={() => {props.changeActiveIndex(props.activeIndexRef, 2)}} isActive={!((props.activeIndex-2)%maxPageIndex)}>
               <p>03</p>
             </Button>
           </li>
           <li>
-            <Button onClick={() => {props.changeActiveIndex(3)}} isActive={!((props.activeIndex-3)%maxPageIndex)}>
+            <Button onClick={() => {props.changeActiveIndex(props.activeIndexRef, 3)}} isActive={!((props.activeIndex-3)%maxPageIndex)}>
               <p>04</p>
             </Button>
           </li>
           <li>
-            <Button onClick={() => {props.changeActiveIndex(4)}} isActive={!((props.activeIndex-4)%maxPageIndex)}>
+            <Button onClick={() => {props.changeActiveIndex(props.activeIndexRef, 4)}} isActive={!((props.activeIndex-4)%maxPageIndex)}>
               <p>05</p>
             </Button>
           </li>
@@ -239,4 +239,5 @@ PartOne.propTypes = {
   menuToggle: PropTypes.func.isRequired,
   activeIndex: PropTypes.number.isRequired,
   changeActiveIndex: PropTypes.func.isRequired,
+  activeIndexRef: PropTypes.object,
 }
