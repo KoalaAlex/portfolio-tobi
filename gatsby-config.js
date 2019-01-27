@@ -51,8 +51,8 @@ module.exports = {
         short_name: config.siteTitleAlt,
         description: config.siteDescription,
         start_url: config.pathPrefix,
-        background_color: '#663399',
-        theme_color: '#663399',
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
         display: 'fullscreen',
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
         icons: [
