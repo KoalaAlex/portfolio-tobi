@@ -19,11 +19,13 @@ import GlobalString from '../../styles/global'
 addLocaleData(de, en)
 
 const GlobalFontFace = createGlobalStyle`
-  font-family: 'FeatherScript';
-  src: local('FeatherScript') local('FeatherScript'),
-     url(${fontFiles.FeatherScriptWOFF}) format('woff'), /* Moder Browser */
-     url(${fontFiles.FeatherScriptTTF}) format('truetype'), /* Safari, Android, iOS */
-     url(${fontFiles.FeatherScriptOTF}) format('opentype');
+  @font-face {
+    font-family: 'FeatherScript';
+    src: local('FeatherScript'),
+       url(${fontFiles.FeatherScriptWOFF}) format('woff'), /* Moder Browser */
+       url(${fontFiles.FeatherScriptTTF}) format('truetype'), /* Safari, Android, iOS */
+       url(${fontFiles.FeatherScriptOTF}) format('opentype');
+     }
 `;
 
 const Layout = ({ children }) => (

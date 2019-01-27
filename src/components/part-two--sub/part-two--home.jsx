@@ -18,9 +18,14 @@ const videoJsOptions = {
   controls: true,
   fluid: true,
   sources: [{
-    src: 'https://ak8.picdn.net/shutterstock/videos/31621018/preview/stock-footage-hyperlapse-timelapse-of-night-city-traffic-on-way-stop-street-intersection-circle-roundabout-in.mp4',
+    src: 'https://app.coverr.co/s3/mp4/Mock-up.mp4',
     type: 'video/mp4'
-  }]
+  },
+  {
+    src: 'https://app.coverr.co/s3/mp4/Mock-up.webm',
+    type: 'video/webm'
+  }
+]
 }
 
 export const PartTwoHome = () => {
