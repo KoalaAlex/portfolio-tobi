@@ -11,8 +11,10 @@ import { Headline, SubHeadline, Content } from '../../styles/general'
 const VideoPlayerFlex = styled(VideoPlayer)`
   display: flex;
   margin: 10%;
+  width: 80%;
+  height: 80%;
   ${props => props.isMax && css`
-    margin; 0;
+    margin: 0;
     height: 100%;
     width: 100%;
   `}

@@ -18,6 +18,7 @@
     "gatsby-plugin-google-fonts": "0.0.4",
     "gatsby-plugin-manifest": "^2.0.13",
     "gatsby-plugin-offline": "^2.0.21",
+    "gatsby-plugin-postcss": "^2.0.2",
     "gatsby-plugin-react-helmet": "^3.0.5",
     "gatsby-plugin-sharp": "^2.0.18",
     "gatsby-source-filesystem": "^2.0.17",
@@ -43,7 +44,9 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predevelop": "postcss",
+    "prebuild": "postcss"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
