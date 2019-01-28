@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.6",
     "@emotion/styled": "^10.0.6",
+    "babel-plugin-styled-components": "^1.10.0",
     "carbon-components": "^9.68.12",
     "carbon-components-react": "^6.82.0",
     "carbon-icons": "^7.0.7",
@@ -18,9 +19,9 @@
     "gatsby-plugin-google-fonts": "0.0.4",
     "gatsby-plugin-manifest": "^2.0.14",
     "gatsby-plugin-offline": "^2.0.22",
-    "gatsby-plugin-postcss": "^2.0.3",
     "gatsby-plugin-react-helmet": "^3.0.5",
     "gatsby-plugin-sharp": "^2.0.18",
+    "gatsby-plugin-styled-components": "^3.0.4",
     "gatsby-source-filesystem": "^2.0.18",
     "gatsby-transformer-remark": "^2.2.1",
     "gatsby-transformer-sharp": "^2.1.12",
@@ -44,9 +45,7 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "predevelop": "postcss",
-    "prebuild": "postcss"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

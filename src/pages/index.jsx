@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { fontFace } from 'emotion'
 import styled from '@emotion/styled'
 import { Layout } from '../components/Layout/layout'
@@ -10,6 +10,20 @@ import { MenuBackground } from '../components/Menu/menu-background'
 import BGSlider from '../components/bg-slider'
 
 import { FullWindowGrid } from '../styles/grid/grid-styles'
+
+import { createGlobalStyle } from "styled-components";
+
+import fontFiles from '../fonts/fonts';
+
+const GlobalFontFace = createGlobalStyle`
+  @font-face {
+    font-family: 'FeatherScript';
+    src: local('FeatherScript'),
+       url(${fontFiles.FeatherScriptWOFF}) format('woff'), /* Moder Browser */
+       url(${fontFiles.FeatherScriptTTF}) format('truetype'), /* Safari, Android, iOS */
+       url(${fontFiles.FeatherScriptOTF}) format('opentype');
+     }
+`;
 
 export default function Index(props) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -37,25 +51,33 @@ export default function Index(props) {
     }
   }
 
+  const memoGlobalStyle = useMemo(() => (
+      <GlobalFontFace />
+    )
+    , () => {return true});
+
   return (
-    <Layout>
-      <BGSlider
-        activeIndex={activeIndex}>
-      </BGSlider>
-      {isMenuActive && (
-        <MenuBackground />
-      )}
-      <FullWindowGrid>
-        <PartOne
-          isMenuActive={isMenuActive}
-          menuToggle={setIsMenuActive}
-          activeIndex={activeIndex}
-          activeIndexRef={activeIndexRef}
-          changeActiveIndex={changeActiveIndexIfNeeded} />
-        <PartTwo
+    <>
+      {memoGlobalStyle}
+      <Layout>
+        <BGSlider
           activeIndex={activeIndex}>
-        </PartTwo>
-      </FullWindowGrid>
-    </Layout>
+        </BGSlider>
+        {isMenuActive && (
+          <MenuBackground />
+        )}
+        <FullWindowGrid>
+          <PartOne
+            isMenuActive={isMenuActive}
+            menuToggle={setIsMenuActive}
+            activeIndex={activeIndex}
+            activeIndexRef={activeIndexRef}
+            changeActiveIndex={changeActiveIndexIfNeeded} />
+          <PartTwo
+            activeIndex={activeIndex}>
+          </PartTwo>
+        </FullWindowGrid>
+      </Layout>
+    </>
   )
 }

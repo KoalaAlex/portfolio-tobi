@@ -9,24 +9,10 @@ import { Context } from '../context'
 import Provider from './provider'
 import { Seo } from '../seo'
 
-import { createGlobalStyle } from "styled-components";
-
-import fontFiles from '../../fonts/fonts';
-
 // css string
 import GlobalString from '../../styles/global'
 
 addLocaleData(de, en)
-
-const GlobalFontFace = createGlobalStyle`
-  @font-face {
-    font-family: 'FeatherScript';
-    src: local('FeatherScript'),
-       url(${fontFiles.FeatherScriptWOFF}) format('woff'), /* Moder Browser */
-       url(${fontFiles.FeatherScriptTTF}) format('truetype'), /* Safari, Android, iOS */
-       url(${fontFiles.FeatherScriptOTF}) format('opentype');
-     }
-`;
 
 const Layout = ({ children }) => (
   <>
@@ -34,7 +20,6 @@ const Layout = ({ children }) => (
        styles={GlobalString}
      />
     <Seo />
-    <GlobalFontFace />
       <Provider>
           <Context.Consumer>
               {({ lang }) => (
